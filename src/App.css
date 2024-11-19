@@ -1,38 +1,206 @@
-.App {
+/* General body and layout styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  margin: 0;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* Main container */
+#container {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Title */
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+/* Button for finding partner */
+button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 1em;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+/* Chat box container */
+#chat-container {
+  display: none;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* Room and message styles */
+#room-info {
+  padding: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: #007bff;
   color: white;
+  border-bottom: 1px solid #ddd;
 }
 
-.App-link {
-  color: #61dafb;
+/* Message container */
+#messages {
+  height: 300px;
+  overflow-y: auto;
+  padding: 15px;
+  background: #f9f9f9;
+  border-bottom: 1px solid #ddd;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Each message item */
+#messages div {
+  margin-bottom: 10px;
+}
+
+/* Input for message */
+#message-input {
+  width: calc(100% - 40px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Typing indicator style */
+#typing-indicator {
+  font-style: italic;
+  color: gray;
+  padding: 10px;
+}
+
+/* Styles for the footer */
+#footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+#footer h4 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Responsive design for smaller screens */
+@media screen and (max-width: 600px) {
+  #container {
+      width: 90%;
+      padding: 15px;
   }
-  to {
-    transform: rotate(360deg);
+
+  #chat-container {
+      width: 100%;
   }
+
+  #room-info {
+      font-size: 1em;
+  }
+
+  #message-input {
+      padding: 8px;
+      font-size: 0.9em;
+  }
+
+  h1 {
+      font-size: 1.5em;
+  }
+
+  button {
+      padding: 8px 15px;
+      font-size: 0.9em;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #container {
+      padding: 10px;
+  }
+
+  #message-input {
+      padding: 8px;
+      font-size: 0.9em;
+  }
+
+  #messages {
+      height: 250px;
+      padding: 10px;
+  }
+
+  #typing-indicator {
+      padding: 5px;
+      font-size: 0.9em;
+  }
+}
+
+/* Message input field and button */
+input[type="text"] {
+  padding: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  margin-right: 10px;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 1em;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:focus {
+  outline: none;
 }
