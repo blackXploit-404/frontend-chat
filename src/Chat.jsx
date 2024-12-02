@@ -126,7 +126,7 @@ const ChatApp = () => {
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <h1>Ghost.Chat</h1>
+      <strong><h1>Hidd-Chat - A simple anonymous chat platfrom.</h1></strong>
       {!connected && <button onClick={findPartner}>Find a Partner</button>}
       {connected && !partnerFound && <p>Looking for a partner...</p>}
       {connected && partnerFound && <p>You are now connected to a partner!</p>}
@@ -165,8 +165,10 @@ const ChatApp = () => {
         </div>
       )}
 
-      <footer style={{ marginTop: "20px" }}>
+      <footer style={{ marginTop: "50px" }} align="center">
         <p>Press ESC to end the chat and find a new partner.</p>
+        <p>If you are on mobile please do a refresh to end chat and find a new user.</p>
+        <p><strong>Note :</strong> This chat isn't connected to any database so once you refresh your browser all chats are permanently deleted.</p>
       </footer>
     </div>
   );
