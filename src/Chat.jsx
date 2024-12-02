@@ -12,6 +12,7 @@ const ChatApp = () => {
   const [typing, setTyping] = useState(false);
   const [typingTimeout, setTypingTimeout] = useState(null);
   const [userTyping, setUserTyping] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     socket.on("partnerFound", () => {
@@ -124,9 +125,35 @@ const ChatApp = () => {
     }
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const appStyle = {
+    padding: "20px",
+    fontFamily: "Arial, sans-serif",
+    backgroundColor: darkMode ? "#121212" : "#f9f9f9",
+    color: darkMode ? "#ffffff" : "#000000",
+    minHeight: "100vh",
+    transition: "all 0.3s ease",
+  };
+
+  const inputStyle = {
+    padding: "5px",
+    width: "80%",
+    backgroundColor: darkMode ? "#333" : "#fff",
+    color: darkMode ? "#fff" : "#000",
+    border: "1px solid #ccc",
+  };
+
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <strong><h1>Hidd-Chat - A simple anonymous chat platfrom.</h1></strong>
+    <div style={appStyle}>
+      <header style={{ display: "flex", justifyContent: "space-between" }}>
+        <h1>Hidd-Chat - A simple anonymous chat platform</h1>
+        <button onClick={toggleDarkMode} style={{ padding: "10px" }}>
+          {darkMode ? "Light Mode" : "Dark Mode"}
+        </button>
+      </header>
       {!connected && <button onClick={findPartner}>Find a Partner</button>}
       {connected && !partnerFound && <p>Looking for a partner...</p>}
       {connected && partnerFound && <p>You are now connected to a partner!</p>}
@@ -139,6 +166,8 @@ const ChatApp = () => {
           height: "300px",
           overflowY: "scroll",
           marginTop: "20px",
+          backgroundColor: darkMode ? "#222" : "#fff",
+          color: darkMode ? "#ddd" : "#000",
         }}
       >
         {messages.map((msg, index) => (
@@ -157,18 +186,45 @@ const ChatApp = () => {
             value={input}
             onChange={handleInputChange}
             onKeyPress={handleKeyPress}
-            style={{ padding: "5px", width: "80%" }}
+            style={inputStyle}
           />
-          <button onClick={sendMessage} style={{ padding: "5px 10px" }}>
+          <button
+            onClick={sendMessage}
+            style={{
+              padding: "5px 10px",
+              backgroundColor: darkMode ? "#444" : "#007bff",
+              color: darkMode ? "#fff" : "#fff",
+            }}
+          >
             Send
           </button>
         </div>
       )}
 
-      <footer style={{ marginTop: "50px" }} align="center">
+      <footer style={{ marginTop: "50px", textAlign: "center" }}>
         <p>Press ESC to end the chat and find a new partner.</p>
-        <p>If you are on mobile please do a refresh to end chat and find a new user.</p>
-        <p><strong>Note :</strong> This chat isn't connected to any database so once you refresh your browser all chats are permanently deleted.</p>
+        <p>
+          If you are on mobile, please refresh to end the chat and find a new
+          user.
+        </p>
+        <p>
+          <strong>Note:</strong> This chat isn't connected to any database, so
+          once you refresh your browser, all chats are permanently deleted.
+        </p>
+        <div style={{ marginTop: "20px" }}>
+          <a href="/how-it-works" style={{ marginRight: "20px" }}>
+            How It Works
+          </a>
+          <a href="/about">About</a>
+          <div style={{ marginTop: "10px" }}>
+            <img
+          src="https://cdn.worldvectorlogo.com/logos/socket-io.svg"
+          alt="Socket.IO Logo"
+          style={{ height: "50px", marginTop: "10px" }}
+        />
+        <p>Powered by Socket.IO</p>
+        </div>
+      </div>
       </footer>
     </div>
   );
