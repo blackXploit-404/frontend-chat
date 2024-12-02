@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://159.223.125.170:3000/");
+const socket = io("https://ghost-chat-backend-8iwu.onrender.com/");
 
 const ChatApp = () => {
   const [connected, setConnected] = useState(false);
