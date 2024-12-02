@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Anonsphere",
+  "name": "Anonsphere - Speak Freely, Stay Anonymous",
   "icons": [
     {
       "src": "favicon.ico",
@@ -18,8 +18,9 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#121212",
+  "background_color": "#1a1a1a",
+  "description": "Anonsphere is a secure and anonymous chat platform to connect with people in real time. Speak freely and stay anonymous."
 }
